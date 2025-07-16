@@ -12,7 +12,7 @@ export default defineConfig({
         name: 'Budget Tracker',
         short_name: 'Budget Tracker',
         description: 'My React + Vite + Tailwind PWA',
-        theme_color: '#0f172a',
+        theme_color: '#0f172a', // Tailwind dark color
         background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
@@ -32,16 +32,9 @@ export default defineConfig({
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
-          },
-          {
-            src: 'apple-touch-icon.png',
-            sizes: '180x180',
-            type: 'image/png'
           }
         ]
       }
     })
   ]
 })
-
-
