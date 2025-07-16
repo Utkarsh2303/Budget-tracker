@@ -1,21 +1,30 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const BudgetContext = createContext();
 export const useBudget = () => useContext(BudgetContext);
 
 export const BudgetProvider = ({ children }) => {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState(() => {
+    const saved = localStorage.getItem('cashmate-transactions');
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const [showModal, setShowModal] = useState(false);
 
+  // Save to localStorage on any change
+  useEffect(() => {
+    localStorage.setItem('cashmate-transactions', JSON.stringify(transactions));
+  }, [transactions]);
+
   const addTransaction = (tx) => {
-    setTransactions([
-      ...transactions,
+    setTransactions(prev => [
+      ...prev,
       { ...tx, date: new Date().toLocaleDateString() }
     ]);
   };
 
   const deleteTransaction = (indexToDelete) => {
-    setTransactions(transactions.filter((_, index) => index !== indexToDelete));
+    setTransactions(prev => prev.filter((_, index) => index !== indexToDelete));
   };
 
   const clearAllTransactions = () => {
@@ -54,4 +63,3 @@ export const BudgetProvider = ({ children }) => {
     </BudgetContext.Provider>
   );
 };
-
