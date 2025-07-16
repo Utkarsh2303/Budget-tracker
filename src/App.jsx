@@ -11,7 +11,7 @@ function App() {
     <BudgetProvider>
       <Router>
         <Navbar />
-        <InstallPrompt/>
+    
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/history" element={<History />} />
