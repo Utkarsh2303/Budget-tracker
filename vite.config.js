@@ -7,12 +7,12 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],
+      includeAssets: ['robots.txt', 'apple-touch-icon.png'], // 👈 favicon removed
       manifest: {
-        name: 'Budget Tracker',
-        short_name: 'Budget Tracker',
-        description: 'My React + Vite + Tailwind PWA',
-        theme_color: '#0f172a', // Tailwind dark color
+        name: 'Cashmate - Budget Tracker',
+        short_name: 'Cashmate',
+        description: 'Track your expenses and income with Cashmate',
+        theme_color: '#0f172a',
         background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
@@ -32,6 +32,11 @@ export default defineConfig({
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
+          },
+          {
+            src: 'apple-touch-icon.png',
+            sizes: '180x180',
+            type: 'image/png'
           }
         ]
       }
